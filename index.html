@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prevailing Word School System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>🏫 Prevailing Word School System</h1>
+        <p>Student Management & Tuition Portal</p>
+    </header>
+
+    <div class="grid">
+        <!-- ADD STUDENT -->
+        <div class="card">
+            <h2>➕ Add Student</h2>
+            <form id="addStudentForm" onsubmit="handleSubmit(event, 'add')">
+                <div class="form-group">
+                    <label for="add_id">Student ID</label>
+                    <input type="text" id="add_id" required placeholder="e.g., STU101">
+                </div>
+                <div class="form-group">
+                    <label for="add_name">Full Name</label>
+                    <input type="text" id="add_name" required placeholder="e.g., John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="add_grade">Grade / Class</label>
+                    <input type="text" id="add_grade" required placeholder="e.g., Grade 10">
+                </div>
+                <button type="submit" class="btn-primary">Add Student</button>
+            </form>
+            <div id="add_output" class="output-box">System ready...</div>
+        </div>
+
+        <!-- SEARCH STUDENT -->
+        <div class="card">
+            <h2>🔍 Search Records</h2>
+            <form id="searchForm" onsubmit="handleSubmit(event, 'search')">
+                <div class="form-group">
+                    <label for="search_query">Search Query</label>
+                    <input type="text" id="search_query" required placeholder="Enter ID or Name">
+                </div>
+                <button type="submit" class="btn-primary">Search</button>
+            </form>
+            <div id="search_output" class="output-box">ID        Name             Grade   Balance&#10;------------------------------------------------</div>
+        </div>
+
+        <!-- DELETE STUDENT -->
+        <div class="card">
+            <h2>🗑️ Delete Student</h2>
+            <form id="deleteForm" onsubmit="handleSubmit(event, 'delete')">
+                <div class="form-group">
+                    <label for="del_id">Student ID</label>
+                    <input type="text" id="del_id" required placeholder="Enter Student ID to remove">
+                </div>
+                <button type="submit" class="btn-danger">Delete Student</button>
+            </form>
+            <div id="delete_output" class="output-box">System ready...</div>
+        </div>
+    </div>
+
+    <div class="grid" style="grid-template-columns: 1fr;">
+        <!-- TUITION & TRANSACTIONS -->
+        <div class="card">
+            <h2>💰 Tuition Transactions & Receipt Generator</h2>
+            <form id="transactForm" onsubmit="handleSubmit(event, 'transact')">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                    <div class="form-group">
+                        <label for="tx_id">Student ID</label>
+                        <input type="text" id="tx_id" required placeholder="e.g., STU101">
+                    </div>
+                    <div class="form-group">
+                        <label for="tx_type">Transaction Type</label>
+                        <select id="tx_type">
+                            <option value="Charge Fee (+)">Charge Fee (+)</option>
+                            <option value="Collect Payment (-)">Collect Payment (-)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tx_amount">Amount ($)</label>
+                        <input type="number" id="tx_amount" step="0.01" required placeholder="0.00">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="tx_desc">Description (Optional)</label>
+                    <textarea id="tx_desc" rows="2" placeholder="Leave empty for system defaults..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Process Transaction</button>
+            </form>
+            <div id="tx_output" class="output-box">No recent transactions processed.</div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
